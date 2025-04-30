@@ -8,17 +8,16 @@
     </tr>
   </thead>
   <tbody>
+    <% for (let index = 0; index < 9; index++) { %>
     <tr>
-      <td>1</td>
+
+      <% if (index % 2 == 0) { %>
+
+      <td><%= index %></td>
       <td>NOME</td>
       <td>EMAIL</td>
       <td>CELULAR</td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>NOME</td>
-      <td>EMAIL</td>
-      <td>CELULAR</td>
-    </tr>
+    <% } %>  <%} %>
   </tbody>
 </table>

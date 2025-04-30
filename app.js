@@ -1,6 +1,8 @@
 const bodyParser = require("body-parser"); // Importa o body-parser
 const express = require("express"); // Importa biblioteca do express
+const session = require("express-session");
 const sqlite3 = require("sqlite3"); // Importa biblioteca sqlite3
+
 
 const PORT = 8000; // Porta TCP do servidor HTTP da aplicação
 
@@ -16,6 +18,17 @@ db.serialize(() => {
     email TEXT, tel TEXT, cpf TEXT, rg TEXT)`
   );
 });
+
+//configuração para uso de sessão (COOKIES) com express.
+
+app.use(
+  session({
+    secret: "qualquersenha",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
 
 // __dirname é variável interna do nodejs que guarda o caminho absoluto do projeto
 // console.log(__dirname);
@@ -81,7 +94,7 @@ app.post("/cadastro", (req, res) => {
   // Colocar aqui as validações e inclusão no banco de dados do cadastro de usuário
   // 1. Validar dados do usuário
 
-  // 2. Saber se ele já ex  iste no banco
+  // 2. Saber se ele já existe no banco
   const query =
     "SELECT * from users WHERE email = ? OR cpf = ? OR rg = ? OR username = ?";
   db.get(query, [email, cpf, rg, username], (err, row) => {
@@ -127,7 +140,22 @@ app.get("/login", (req, res) => {
 // Rota para processar o formulário de login
 app.post("/login", (req, res) => {
   console.log("POST /login");
-  res.send("Login ainda não implementado");
+  const { username, password } = req.body;
+
+  //consultar o usuario no banco de dados
+  const query = "SELECT * FROM users WHERE username = ? AND password = ?";
+  db.get(query, [username, password], (err, row) => {
+    if (err) throw err;
+    // se usuario valido -> registra a sessão e redireciona para o dashboard
+    if (row) {
+      req.session.loggedin = true;
+      req.session.username = username;
+      res.redirect("/dashboard");
+    }//se nao, envia mensagem de erro (usuario invalido)
+    else {
+      res.send("usuario invalido.");
+    }
+  });
 });
 
 app.get("/dashboard", (req, res) => {
