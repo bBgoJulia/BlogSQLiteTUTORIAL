@@ -1,70 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <%- include("../partials/head.ejs") %>
+<html lang="en">
+  <%- include("../partials/head"); %>
 
   <body>
-    <%- include("../partials/menu.ejs") %> <%# COMENTÁRIO EM EJS %>
+    <%- include("../partials/menu") %>
 
-    <div class="container_rain">
-      <span class="cloud"></span>
-      <span class="cloud"></span>
-      <span class="cloud"></span>
-      <span class="cloud"></span>
-    </div>
-
-    <section class="container">
-      <div class="image_container">
-        <h1>Sobre nossa empresa</h1>
-        <p>
-          Compartilhe suas aventuras e <br />
-          descubra novos lugares ao redor do mundo!
-        </p>
-      </div>
-      <form id="cadastroForm" method="post" action="/cadastro">
-        <div class="title">
-          <h1>Cadastre-se</h1>
-          <p>Preencha os campos abaixo e torne-se parte da nossa comunidade</p>
-        </div>
-        <div class="input_data">
-          <input type="text" id="nome" name="username" required />
-          <label for="">Nome</label>
-        </div>
-        <div class="input_data">
-          <input type="email" id="email" name="email" required />
-          <label for="">Email</label>
-        </div>
-        <div class="input_data">
-          <input type="password" id="password" name="password" required />
-          <label for="">Senha</label>
-        </div>
-        <div class="input_data">
-          <input
-            type="password"
-            id="confirmapassword"
-            name="password"
-            required
-          />
-          <label for="">Confirmar senha</label>
-        </div>
-        <div class="input_data">
-          <input type="tel" id="tel" name="tel" required />
-          <label for="">Contato</label>
-        </div>
-        <div class="input_data">
-          <input type="text" id="CPF" name="cpf" required />
-          <label for="">CPF</label>
-        </div>
-        <div class="input_data">
-          <input type="text" id="RG" name="rg" required />
-          <label for="">RG</label>
-        </div>
-        <div class="btnArea">
-          <p class="msgError"></p>
-          <button id="btnSubmit" type="submit">Enviar</button>
-        </div>
-      </form>
+    <section class="container img_cont">
+      <h1>
+        Compartilhe suas aventuras e <br />
+        descubra novos lugares ao redor do mundo!
+      </h1>
     </section>
 
-    <%- include("../partials/footer.ejs") %>
+    <%- include("../partials/footer") %>
   </body>
 </html>

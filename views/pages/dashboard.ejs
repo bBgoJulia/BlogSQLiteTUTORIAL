@@ -1,29 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <%- include("../partials/head.ejs") %>
+<html lang="en">
+  <%- include("../partials/head"); %>
 
   <body>
-    <%- include("../partials/menu.ejs") %>
-
-    <div class="container_rain">
-      <span class="cloud"></span>
-      <span class="cloud"></span>
-      <span class="cloud"></span>
-      <span class="cloud"></span>
-    </div>
+    <%- include("../partials/menu") %>
 
     <section class="container">
       <div class="image_container">
-        <h1>Sobre nossa empresa</h1>
-        <p>
-          Compartilhe suas aventuras e <br />
-          descubra novos lugares ao redor do mundo!
-        </p>
+        <h1>Sobre nosso site</h1>
+        <p>Participe e descubra o que nossa empresa oferece!</p>
       </div>
 
-      <div style="font-size: 32px"><%- include("../partials/usertable") %></div>
+      <div style="font-size: 20px"><%- include("../partials/usertable") %></div>
     </section>
 
-    <%- include("../partials/footer.ejs") %>
+    <%- include("../partials/footer") %>
   </body>
 </html>
