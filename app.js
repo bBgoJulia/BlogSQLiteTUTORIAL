@@ -207,3 +207,18 @@ app.listen(PORT, () => {
 });
 //teste
 //teste
+
+app.get("/usuarioinvalido", (req, res) => {
+  console.log("GET/ usuarioinvalido");
+  res.render("pages/erro", { ...config, req: req });
+});
+
+app.get("/usuariocadastrado", (req, res) => {
+  console.log("GET/ usuariocadastrado");
+  res.render("pages/erro", { ...config, req: req });
+});
+
+app.get("/cadastradocomsucesso", (req, res) => {
+  console.log("GET/ cadastradocomsucesso");
+  res.render("pages/erro", { ...config, req: req });
+});
